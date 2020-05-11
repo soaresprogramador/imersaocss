@@ -1,0 +1,39 @@
+body {
+    background-image: url('https://media.defense.gov/2019/May/16/2002132328/-1/-1/0/170807-N-XN499-101.JPG');
+    background-size: auto 100vh;
+    /*largurapx alturapx;*/
+    font-family: Arial;
+    height: 100vh;
+}
+
+.menu {
+    background-color: #f3fbec;
+}
+
+a {
+    color: teal;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.site-subtitle,
+.site-title {
+    color: #0c1a46;
+    text-align: center;
+}
+
+.site-subtitle {
+    font-style: italic;
+}
