@@ -74,6 +74,8 @@
      color: #0c1a46;
      text-align: center;
      background-color: cornsilk;
+     justify-content: center;
+     align-items: center;
      /*opacity: 0.6;*/
  }
  
