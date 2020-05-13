@@ -1,101 +1,154 @@
   /*soft reset do css*/
- 
- * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
- }
- 
- body {
-     background-image: url('../img/fundo.jpg');
-     background-size: auto 100vh;
-     /*largurapx alturapx;*/
-     font-family: Arial;
-     background-position: center;
-     background-attachment: fixed;
-     /*background-color: 0, 0, 0, 0.8;*/
-     height: 100vh;
-     font-size: 10px;
- }
- /* se a tela tiver ao menos 400px vai carregar estes estilos */
- 
- @media (min-width: 400px) {
-     body {
-         font-size: 14px;
-     }
- }
- 
- header {
-     height: 100vh;
-     /*coluna*/
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
- 
- .menu {
-     background-color: #f3fbec;
-     /*posição fixa do menu. altera eixo z*/
-     position: fixed;
-     /*ajustar largura*/
-     width: 100vw;
-     top: 0;
- }
- 
- .menu a {
-     /*controlar padding*/
-     display: block;
-     /*aumentar área de clique*/
-     padding: 10px 20px;
- }
- 
- a {
-     color: midnightblue;
-     text-decoration: none;
- }
- 
- a:hover {
-     text-decoration: underline;
-     color: blueviolet;
-     background-color: aquamarine;
- }
- 
- .menu ul {
-     display: flex;
-     justify-content: space-around;
- }
- 
- .menu li {
-     list-style: none;
- }
- 
- .site-subtitle,
- .site-title {
-     color: #0c1a46;
-     text-align: center;
-     background-color: cornsilk;
-     justify-content: center;
-     align-items: center;
-     /*opacity: 0.6;*/
- }
- 
- .site-title {
-     font-size: 4em;
- }
- 
- .site-subtitle {
-     font-style: italic;
- }
- 
- .portfolio-title {
-     background-color: #f3fbec;
- }
-
- .img-portfolio {
-     height: 180px;
-     width: 180px;
- }
- 
- figcaption {
-     background-color: #f3fbec;
- }
+  
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  body {
+      background-repeat: no-repeat;
+      z-index: 1;
+      background-image: url('../img/fundo.jpg');
+      background-size: auto 100vh;
+      /*largurapx alturapx;*/
+      font-family: 'Source Code Pro', monospace;
+      background-position: center;
+      background-attachment: fixed;
+      /*background-color: 0, 0, 0, 0.8;*/
+      font-size: 12px;
+  }
+  /* se a tela tiver ao menos 400px vai carregar estes estilos */
+  
+  @media (min-width: 400px) {
+      body {
+          font-size: 14px;
+      }
+  }
+  
+  header {
+      height: 100vh;
+      /*coluna*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .menu {
+      background-color: #f3fbec;
+      /*posição fixa do menu. altera eixo z*/
+      position: fixed;
+      /*ajustar largura*/
+      width: 100vw;
+      top: 0;
+  }
+  
+  .menu a {
+      /*controlar padding*/
+      display: block;
+      /*aumentar área de clique*/
+      padding: 10px 20px;
+      /*raio da bordar*/
+      border-radius: 10px;
+  }
+  
+  a {
+      color: midnightblue;
+      text-decoration: none;
+  }
+  
+  a:hover {
+      text-decoration: underline;
+      color: blueviolet;
+      background-color: aquamarine;
+  }
+  
+  .menu ul {
+      display: flex;
+      justify-content: space-around;
+  }
+  
+  .menu li {
+      list-style: none;
+  }
+  
+  .site-subtitle,
+  .site-title {
+      color: #0c1a46;
+      text-align: center;
+      background-color: cornsilk;
+      justify-content: center;
+      align-items: center;
+      /*opacity: 0.6;*/
+  }
+  
+  .site-title {
+      font-size: 4em;
+      font-family: 'Gloria Hallelujah', cursive;
+  }
+  
+  .site-subtitle {
+      font-style: italic;
+      font-family: 'Press Start 2P', cursive;
+      line-height: 1.8em;
+  }
+  
+  .portfolio-title {
+      background-color: #f3fbec;
+      font-family: 'Press Start 2P', cursive;
+      margin-bottom: 1.5em;
+      font-size: 2em;
+      align-items: center;
+      text-align: center;
+  }
+  
+  .portfolio {
+      padding: 2em;
+      height: 100vh;
+      /*background: blue;*/
+  }
+  
+  .portfolio h2 {
+      font-family: 'Press Start 2P', cursive;
+      margin-bottom: 1.5em;
+      font-size: 2em;
+  }
+  
+  .portfolio .grid {
+      display: grid;
+      /*espaçamento entrelinhasou colunas*/
+      gap: 2em;
+  }
+  
+  @media (min-width: 560px) {
+      .portfolio .grid {
+          /*largura de colunas*/
+          grid-template-columns: 240px 240px;
+      }
+  }
+  
+  @media (min-width: 880px) {
+      .portfolio .grid {
+          grid-template-columns: repeat(3, 260px);
+          align-content: stretch;
+          justify-content: center;
+          /*calcular */
+          height: calc(60vh - 8em - 48px);
+      }
+  }
+  
+  .portfolio figure {
+      text-align: center;
+  }
+  
+  .img-portfolio {
+      height: 180px;
+      width: 240px;
+      /*proporção das imagens*/
+      object-fit: cover;
+      object-position: left bottom;
+  }
+  
+  figcaption {
+      background-color: #f3fbec;
+  }
