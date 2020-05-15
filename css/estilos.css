@@ -8,15 +8,16 @@
 
 body {
     background-repeat: no-repeat;
-    z-index: 1;
-    background-image: url('../img/fundo.jpg');
+    /*z-index: 1;
+    background-image: url('../img/fundo.jpg');*/
     background-size: auto 100vh;
     /*largurapx alturapx;*/
     font-family: 'Source Code Pro', monospace;
     background-position: center;
     background-attachment: fixed;
-    /*background-color: 0, 0, 0, 0.8;*/
+    background-color: rgba(0, 0, 0, 0.8);
     font-size: 12px;
+    color: white;
 }
 
 
@@ -83,8 +84,7 @@ a:hover {
 }
 
 @keyframes animacaoTitulo {
-    /*0%{
-nao precisa colocar neste caso tbm pode ser from para to
+    /*0%{nao precisa colocar neste caso tbm pode ser from para to
     }*/
     100% {
         transform: scale(1) translateY(0);
@@ -123,22 +123,41 @@ nao precisa colocar neste caso tbm pode ser from para to
 }
 
 .portfolio-title {
-    background-color: #f3fbec;
     font-family: 'Press Start 2P', cursive;
     margin-bottom: 1.5em;
     font-size: 2em;
-    align-items: center;
-    text-align: center;
+    padding: 10px;
+    /*align-items: center;
+    text-align: center;*/
 }
 
+.sobre,
+.contato,
 .portfolio {
     padding: 2em;
-    /*minimo de altura
-      min-height: 100vh;
-      background: blue;*/
+    min-height: 100vh;
+    /* background: blue;
+       só funciona o margin auto no right e left*/
 }
 
-.contato,
+
+/*.portfolio {
+    minimo de altura
+    padding: 2em;
+    min-height: 100vh;
+    só funciona o margin auto no right e left
+}*/
+
+@media (min-width: 1200px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1200px;
+    }
+}
+
+.sobre h2,
+.contato h2,
 .portfolio h2 {
     font-family: 'Press Start 2P', cursive;
     margin-bottom: 1.5em;
@@ -148,6 +167,51 @@ nao precisa colocar neste caso tbm pode ser from para to
 .portfolio .grid {
     display: grid;
     /*espaçamento entrelinhasou colunas*/
+    gap: 2em;
+}
+
+.sobre p {
+    color: white;
+    /*recuo*/
+    text-indent: 1.4em;
+    margin-bottom: 1.4em;
+    text-align: justify;
+}
+
+.sobre a {
+    color: white;
+    text-decoration: underline;
+}
+
+.sobre a:hover {
+    background-color: cyan;
+    text-decoration: none;
+    color: magenta;
+}
+
+.sobre .avatar {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    margin-left: 2em;
+}
+
+
+/*.sobre .avatar img {
+    /*clip é um corte - forma podendo ser responsivo usando o @media
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}*/
+
+@media (min-width: 600px) {
+    .sobre .avatar {
+        clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+        float: right;
+    }
+}
+
+
+/*depois adaptar para mobile - apesar do "mobile first*/
+
+.portfolio .grid {
+    display: grid;
     gap: 2em;
 }
 
@@ -161,50 +225,88 @@ nao precisa colocar neste caso tbm pode ser from para to
 @media (min-width: 880px) {
     .portfolio .grid {
         grid-template-columns: repeat(3, 260px);
-        align-content: stretch;
+        align-content: center;
         justify-content: center;
         /*calcular */
         height: calc(60vh - 8em - 48px);
     }
 }
 
-.portfolio figure {
-    text-align: center;
-    background-color: #f3fbec;
-    padding-top: 10px;
+.flip-card {
+    height: 180px;
+    perspective: 1000px;
 }
 
-.img-portfolio {
-    height: 180px;
-    width: 240px;
-    /*proporção das imagens*/
-    object-fit: cover;
-    object-position: left bottom;
-    transition: transform 500ms;
+.flip-card:hover .card {
+    transform: rotateY(180deg);
 }
 
 
 /*.img-portfolio:hover {
     box-shadow: 0px 0px 5px 2px midnightblue;
     transform: scale(1.1)
-}*/
+   }*/
 
-.portfolio figure:active,
-.portfolio figure:hover {
-    box-shadow: 0px 0px 5px 2px midnightblue;
-    transform: scale(1.1);
-    transition: transform 500ms/*rotate(45deg)*/
-    ;
+
+/*organizando a posição dos cards*/
+
+.card {
+    /*sem a div mãe eles ficaram perdidos na página*/
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
 }
 
+.card-front,
+.card-back {
+    backface-visibility: hidden;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.card-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, .7);
+    height: 180px;
+    width: 100%;
+    transform: rotateY(180deg);
+}
+
+.portfolio figure {
+    text-align: center;
+}
+
+.img-portfolio {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    object-position: left bottom;
+    transition: transform 500ms;
+}
+
+
+/* durante a implantacao dos cards
+   .portfolio figure:active,
+   .portfolio figure:hover {
+       box-shadow: 0px 0px 5px 2px midnightblue;
+       transform: scale(1.1);
+       transition: transform 500ms rotate(45deg);
+    }*/
+
+.sobre,
 .contato {
-    background-color: cornsilk;
     padding: 1em;
     font-size: 1em;
+    /*
+    background-color: #f3fbec;*/
 }
 
 .contato .contato-Titulo {
-    padding-bottom: 10px;
+    padding: 10px;
 }
 
 .contato .icons {
@@ -216,7 +318,7 @@ nao precisa colocar neste caso tbm pode ser from para to
       color: blueviolet;
       font-size: 3em;
       justify-content: space-between;
-  }*/
+   }*/
 
 .contato a {
     color: blueviolet;
